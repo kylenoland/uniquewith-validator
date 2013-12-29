@@ -1,6 +1,6 @@
 <?php
 
-use Felixkiss\UniqueWithValidator\ValidatorExtension;
+use Kylenoland\UniqueWithValidator\ValidatorExtension;
 
 class ValidatorExtensionTest extends PHPUnit_Framework_TestCase
 {
@@ -33,9 +33,9 @@ class ValidatorExtensionTest extends PHPUnit_Framework_TestCase
             'last_name' => 'Bar',
         );
         $validator = new ValidatorExtension(
-            $this->translator, 
-            $this->data, 
-            $this->rules, 
+            $this->translator,
+            $this->data,
+            $this->rules,
             $this->messages
         );
         $validator->setPresenceVerifier($this->presenceVerifier);
@@ -56,9 +56,9 @@ class ValidatorExtensionTest extends PHPUnit_Framework_TestCase
             'last_name' => 'Bar',
         );
         $validator = new ValidatorExtension(
-            $this->translator, 
-            $this->data, 
-            $this->rules, 
+            $this->translator,
+            $this->data,
+            $this->rules,
             $this->messages
         );
         $validator->setPresenceVerifier($this->presenceVerifier);
@@ -84,9 +84,9 @@ class ValidatorExtensionTest extends PHPUnit_Framework_TestCase
             'last_name' => 'Baz',
         );
         $validator = new ValidatorExtension(
-            $this->translator, 
-            $this->data, 
-            $this->rules, 
+            $this->translator,
+            $this->data,
+            $this->rules,
             $this->messages
         );
         $validator->setPresenceVerifier($this->presenceVerifier);
@@ -111,9 +111,9 @@ class ValidatorExtensionTest extends PHPUnit_Framework_TestCase
             'last_name' => 'Baz',
         );
         $validator = new ValidatorExtension(
-            $this->translator, 
-            $this->data, 
-            $this->rules, 
+            $this->translator,
+            $this->data,
+            $this->rules,
             $this->messages
         );
         $validator->setPresenceVerifier($this->presenceVerifier);

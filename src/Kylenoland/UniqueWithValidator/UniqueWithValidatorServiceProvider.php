@@ -19,7 +19,7 @@ class UniqueWithValidatorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('felixkiss/uniquewith-validator');
+        $this->package('kylenoland/uniquewith-validator');
 
         // Registering the validator extension with the validator factory
         $this->app['validator']->resolver(function($translator, $data, $rules, $messages)

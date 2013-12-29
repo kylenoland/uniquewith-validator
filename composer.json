@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "kylenoland\\UniqueWithValidator": "src/"
+            "Kylenoland\\UniqueWithValidator": "src/"
         }
     },
     "minimum-stability": "dev"
