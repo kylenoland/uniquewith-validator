@@ -1,8 +1,8 @@
-# unique_with Validator Rule For Laravel 4
+# unique_with Validator Rule For Laravel 4.1
 
 [![Build Status](https://travis-ci.org/felixkiss/uniquewith-validator.png?branch=master)](https://travis-ci.org/felixkiss/uniquewith-validator)
 
-This package contains a variant of the `validateUnique` rule for Laravel 4, that allows for validation of multi-column UNIQUE indexes.
+This package contains a variant of the `validateUnique` rule for Laravel 4, that allows for validation of multi-column UNIQUE indexes. It also allows for the inclusion of an id parameter in the validation rule string to ignore a particular row in your data store when running these rules. A typical use case is that you want to exclude the current row from validation when performing an update operation.
 
 ## Installation
 
@@ -13,10 +13,16 @@ In your `composer.json` file:
 ```json
 {
     "require": {
-        "laravel/framework": "4.0.*",
+        "laravel/framework": "4.1.*",
         // ...
-        "felixkiss/uniquewith-validator": "dev-master"
-    }
+        "kylenoland/uniquewith-validator": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kylenoland/uniquewith-validator"
+        }
+    ]
 }
 ```
 
@@ -28,7 +34,7 @@ Add the following to your `providers` array in `config/app.php`:
 'providers' => array(
     // ...
 
-    'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
+    'Kylenoland\UniqueWithValidator\UniqueWithValidatorServiceProvider',
 ),
 ```
 
@@ -46,7 +52,7 @@ See the [Validation documentation](http://laravel.com/docs/validation) of Larave
 
 ### Specify different column names in the database
 
-If your input field names are different from the corresponding database columns, 
+If your input field names are different from the corresponding database columns,
 you can specify the column names explicitly.
 
 e.g. your input contains a field 'last_name', but the column in your database is called 'sur_name':
@@ -78,7 +84,7 @@ class CreateUsersTable extends Migration {
     {
         Schema::create('users', function(Blueprint $table) {
             $table->increments('id');
-            
+
             $table->timestamps();
 
             $table->string('first_name');

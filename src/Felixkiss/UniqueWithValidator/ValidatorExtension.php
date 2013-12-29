@@ -14,7 +14,7 @@ class ValidatorExtension extends Validator
 
     /**
      * Usage: unique_with: table, column1, column2, ...
-     * 
+     *
      * @param  [type] $attribute  [description]
      * @param  [type] $value      [description]
      * @param  [type] $parameters [description]
@@ -34,7 +34,23 @@ class ValidatorExtension extends Validator
         // them as where clauses as well
         $extra = array();
 
-        for($i = 1; $i < sizeof($parameters); $i++)
+        // Check if last parameter is an integer. If it is, then it will ignore the row with the specified id - useful when updating a row
+        $parameters_length = sizeof($parameters);
+        $ignore_id = null;
+
+        if ($parameters_length > 1) {
+            $last_param = $parameters[$parameters_length-1];
+            $last_param_value = str_replace(" ", "", $parameters[$parameters_length-1]);
+            if (preg_match('/^[1-9][0-9]*$/', $last_param_value)) {
+                $last_param_value = intval($last_param_value);
+                if ($last_param_value > 0) {
+                    $ignore_id = $last_param_value;
+                    $parameters_length--;
+                }
+            }
+        }
+
+        for($i = 1; $i < $parameters_length; $i++)
         {
             // Figure out whether field_name is the same as column_name
             // or column_name is explicitly specified.
@@ -67,7 +83,7 @@ class ValidatorExtension extends Validator
 
         return $verifier->getCount(
 
-            $table, $column, $value, null, null, $extra
+            $table, $column, $value, $ignore_id, null, $extra
 
         ) == 0;
     }
