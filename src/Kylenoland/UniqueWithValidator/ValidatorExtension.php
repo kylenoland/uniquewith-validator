@@ -1,4 +1,4 @@
-<?php namespace Felixkiss\UniqueWithValidator;
+<?php namespace Kylenoland\UniqueWithValidator;
 
 use Illuminate\Validation\Validator;
 

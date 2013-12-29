@@ -1,4 +1,4 @@
-<?php namespace Felixkiss\UniqueWithValidator;
+<?php namespace Kylenoland\UniqueWithValidator;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Factory;
@@ -38,7 +38,7 @@ class UniqueWithValidatorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
     }
 
     /**
